@@ -36047,7 +36047,8 @@ class FileClient {
     }
     read(passageKey, page) {
         return __awaiter(this, void 0, void 0, function* () {
-            const path = `/passages/${passageKey}/${page}.json`;
+            const base = location.pathname.startsWith('/interlinear-build') ? '/interlinear-build' : '';
+            const path = `${base}/passages/${passageKey}/${page}.json`;
             const response = yield fetch(path);
             if (!response.ok) {
                 throw new Error('failed to load passage');
